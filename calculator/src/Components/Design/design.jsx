@@ -40,26 +40,51 @@ export default class design extends Component {
     var value1 = 0;
     var value2 = 0;
     var result = 0;
-
-    if (x == "+") {
-      value1 = this.state.calculation;
-
-      this.setState({ calculation: "" });
-    } else if (x == "=") {
-      value2 = this.state.calculation;
-      console.log(value1);
-      console.log(value2);
-      result = parseInt(value1) + parseInt(value2);
-      console.log(result);
-      this.setState({ calculation: result });
-    } else if (this.state.calculation.includes("C")) {
-      this.setState({ calculation: "" });
-    } else {
-      this.setState((prevState) => ({
-        calculation: prevState.calculation.concat(x),
-        formula: prevState.formula.concat(x),
-      }));
+    this.setState((prevState) => ({
+      formula: prevState.formula.concat(x),
+    }));
+    value1 = this.state.calculation;
+    switch (x) {
+      case "+":
+        // console.log(value1);
+        this.setState({ calculation: "" });
+        break;
+      case "=":
+        value2 = this.state.calculation;
+        console.log(value1);
+        console.log(value2);
+        result = parseInt(value1) + parseInt(value2);
+        console.log(result);
+        this.setState({ calculation: result });
+        break;
+      case "C":
+        this.setState({ calculation: "" });
+        break;
+      default:
+        this.setState((prevState) => ({
+          calculation: prevState.calculation.concat(x),
+          // formula: prevState.formula.concat(x),
+        }));
+        break;
     }
+    // if (x == "+") {
+    //   value1 = this.state.calculation;
+
+    //   this.setState({ calculation: "" });
+    // } else if (x == "=") {
+    //   value2 = this.state.calculation;
+    //   console.log(value1);
+    //   console.log(value2);
+    //   result = parseInt(value1) + parseInt(value2);
+    //   console.log(result);
+    //   this.setState({ calculation: result });
+    // } else if (this.state.calculation.includes("C")) {
+    //   this.setState({ calculation: "" });
+    // } else {
+    //   this.setState((prevState) => ({
+    //     calculation: prevState.calculation.concat(x),
+    //     formula: prevState.formula.concat(x),
+    //   }));
   };
   // };
 
