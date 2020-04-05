@@ -1,0 +1,30 @@
+.button {
+  height: 40px;
+  width: 40px;
+  border: 1px solid white;
+  background-color: #333;
+  border-radius: 2px;
+  display: inline-block;
+  color: green;
+  font-family: monospace;
+  font-size: 22px;
+  margin: 5px 10px;
+  position: relative;
+}
+.btnText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 40px;
+  width: 40px;
+  border-radius: 2px;
+  background-color: #333;
+  border: 2px solid white;
+  color: green;
+  outline: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

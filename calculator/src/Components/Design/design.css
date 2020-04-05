@@ -1,0 +1,40 @@
+.buttons:nth-child() {
+  /* display: flex; */
+  width: 100%;
+}
+
+.display {
+  height: 100px;
+  width: 91%;
+  border-radius: 2px;
+  margin: auto;
+  border: 2px solid white;
+  display: grid;
+  grid-template-rows: 1fr 0.5fr 1fr;
+  /* justify-content: flex-end; */
+  align-items: flex-end;
+}
+.line {
+  height: 1px;
+  margin: 2px auto;
+  background-color: gray;
+  width: 90%;
+}
+
+.display .userInput {
+  text-align: right;
+  width: 100%;
+  margin: 2px;
+  padding: 0px 10px;
+  /* height: 40px; */
+  background: transparent;
+  border: none;
+  font-size: 40px;
+  font-family: sans-serif;
+  color: green;
+}
+
+.display .formula {
+  font-family: sans-serif;
+  font-size: 15px;
+}
