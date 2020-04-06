@@ -26,71 +26,91 @@ export default class design extends Component {
       ".",
       "=",
     ],
-    ScientificButtons: [],
+    ScientificButtons: ["SIN", "COS", "TAN", "COT", "COSEC", "SEC", "&radic"],
     formula: "",
     calculation: "",
-    result: "",
-  };
-
-  valueGetter = (e) => {
-    return e;
   };
 
   clickHandler = (x) => {
-    var value1 = 0;
-    var value2 = 0;
+    var values = [];
     var result = 0;
-    this.setState((prevState) => ({
-      formula: prevState.formula.concat(x),
-    }));
-    value1 = this.state.calculation;
     switch (x) {
       case "+":
-        // console.log(value1);
+        this.setState((prevState) => ({
+          formula: prevState.formula.concat(x),
+        }));
+        this.setState({ calculation: "" });
+        break;
+      case "-":
+        this.setState((prevState) => ({
+          formula: prevState.formula.concat(x),
+        }));
+        this.setState({ calculation: "" });
+        break;
+      case "x":
+        this.setState((prevState) => ({
+          formula: prevState.formula.concat(x),
+        }));
+        this.setState({ calculation: "" });
+        break;
+      case "/":
+        this.setState((prevState) => ({
+          formula: prevState.formula.concat(x),
+        }));
         this.setState({ calculation: "" });
         break;
       case "=":
-        value2 = this.state.calculation;
-        console.log(value1);
-        console.log(value2);
-        result = parseInt(value1) + parseInt(value2);
+        // switch (operation) {
+        // case "+":
+        if (this.state.formula.includes("+")) {
+          console.log("addition");
+          values = this.state.formula.split("+");
+          result = 0;
+          values.forEach((value) => {
+            result += parseInt(value);
+          });
+        }
+        if (this.state.formula.includes("-")) {
+          console.log("subtraction");
+          values = this.state.formula.split("-");
+          result = values[0];
+          for (var x = 0; x < values.length - 1; x++) {
+            result -= parseInt(values[x + 1]);
+          }
+        }
+        if (this.state.formula.includes("x")) {
+          console.log("multiply");
+          values = this.state.formula.split("x");
+          result = 1;
+          values.forEach((value) => {
+            result *= parseInt(value);
+          });
+        }
+        if (this.state.formula.includes("/")) {
+          console.log("division");
+          values = this.state.formula.split("/");
+          result = values[0];
+          for (var x = 0; x < values.length - 1; x++) {
+            result = result / parseInt(values[x + 1]);
+          }
+        }
+
         console.log(result);
-        this.setState({ calculation: result });
+        this.setState({ calculation: result.toString() });
         break;
       case "C":
-        this.setState({ calculation: "" });
+        this.setState({ calculation: "", formula: "", result: 0 });
         break;
       default:
         this.setState((prevState) => ({
+          formula: prevState.formula.concat(x),
           calculation: prevState.calculation.concat(x),
-          // formula: prevState.formula.concat(x),
         }));
         break;
     }
-    // if (x == "+") {
-    //   value1 = this.state.calculation;
-
-    //   this.setState({ calculation: "" });
-    // } else if (x == "=") {
-    //   value2 = this.state.calculation;
-    //   console.log(value1);
-    //   console.log(value2);
-    //   result = parseInt(value1) + parseInt(value2);
-    //   console.log(result);
-    //   this.setState({ calculation: result });
-    // } else if (this.state.calculation.includes("C")) {
-    //   this.setState({ calculation: "" });
-    // } else {
-    //   this.setState((prevState) => ({
-    //     calculation: prevState.calculation.concat(x),
-    //     formula: prevState.formula.concat(x),
-    //   }));
   };
-  // };
 
   render() {
-    // console.log(this.state.formula);
-    // console.log("Calc" + this.state.calculation);
     return (
       <div>
         <div className="display">
